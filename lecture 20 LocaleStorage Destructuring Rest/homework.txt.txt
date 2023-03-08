@@ -1,0 +1,20 @@
+Learn the Array utility functions!
+
+Finish the login and registration logic that we started in class. 
+Create validation functions for the login and register form and style them. 
+
+Login button must be disabled if: 
+  -the user has not completed both fields
+ 
+Register button must be disabled if:
+  -the user has not completed all of the fields
+  - the password and the confirm password field doesn't match
+  - the password is less than 6 chars long or doesn't contain special char, small letter, capital letter
+
+Error messages must appear if the user: 
+ - tries to login with wrong user - pass combination
+ - tries to register with username that is already taken
+
+The home page must not be accessable if there is no logged user.
+
+Upon successful login the user must be redirected to the homepage.

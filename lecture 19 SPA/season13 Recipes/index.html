@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./assets/styles/reset.css">
+    
+    <script src="./assets/data/data.js"></script>
+    <script src="./assets/model/RecipiesManager.js"></script>
+
+
+    <title>Document</title>
+
+    <style>
+        /* body {
+            display: grid;
+            grid-template-rows: 1fr 6.56fr 1fr;
+            grid-template-columns:1fr;
+            grid-template-areas:
+                "a"
+                "b"
+                "c";
+            
+        } */
+   
+
+        header {
+            background-color: rgb(224, 158, 36);
+            padding-top: 1%;
+            padding-bottom: 0.5%;
+            display: flex;
+            justify-content: space-between;
+            /* height: 20%; */
+            /* grid-area: a; */
+        }
+
+        header span {
+            border: 2px solid black;
+            border-radius: 25px;
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+        }
+        header a{
+            text-decoration: none;
+        }
+        header img{
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        /* main {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            align-items: flex-end;
+
+        } */
+
+
+        /* main div{
+            background-color: rgb(78, 151, 151);
+            height: 100%;
+        } */
+
+        footer {
+            background-color: rgb(224, 158, 36);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 22px;
+            padding-top: 1%;
+            height: 70px;
+
+            /* align-self: flex-end; */
+            /* grid-area: c; */
+        }
+
+        #allRecipies .container{
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 10%;
+            /* margin-right: 5%; */
+            /* justify-content: center;
+            align-items: center; */
+            gap: 20px;
+        }
+
+        #favoritRecipies .container{
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 10%;
+            gap: 20px;
+        }
+
+        #createRecipies .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #recipeForm {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <header>
+        <img width="50" src="./assets/images/logo.png" alt="">
+        <a href="#allRecipies">
+            <span>Всички рецепти</span>
+        </a>
+
+        <a href="#favoritRecipies">
+            <span>Любими рецепти</span>
+        </a>
+
+        <a href="#createRecipies">
+            <span>Създай рецепта</span>
+        </a>
+
+        <a href="#myProfile">
+            <span style="background-color: rgb(189, 22, 22); color: white;">Моят Профил</span>
+        </a>
+
+        <img width="50" src="./assets/images/guest.png" alt="">
+    </header>
+
+    <main>
+
+        <div id="allRecipies">
+            <input style="margin-left: 10%;" type="text" id="searchInput" placeholder="What ingredients to filter?">
+            <input style="margin-left: 10%;" type="text" id="searchInput2" placeholder="What do you want?">
+            <div class="container">
+                
+
+            </div>
+            
+
+        </div>
+
+        <div id="favoritRecipies">
+            <div class="container">
+         
+            </div>
+
+        </div>
+
+        <div id="createRecipies">
+            <div class="container">
+
+                <form id="recipeForm">
+                    <input type="text" name="name" placeholder="Name" id="recipeName">
+                    <textarea name="recipeText" cols="30" rows="10" id="recipeArea"></textarea>
+                    <input type="url" name="linkTo" placeholder="Link to recipe" id="recipeLink">
+                    <label for="img">Select image:</label>
+                    <input type="file" id="img" name="img" accept="image/*">
+                    <input type="submit" value="Submit" id="deliver">
+                </form>
+            </div>
+
+        </div>
+
+        <div id="myProfile">
+            myProfile
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        <span>Website created by: Stoyan Stoyanov</span>
+        <span>Alrights reserved 2023</span>
+    </footer>
+
+
+    <script src="ViewController.js"></script>
+
+</body>
+
+</html>

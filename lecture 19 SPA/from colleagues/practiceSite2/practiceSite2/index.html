@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/styles/reset.css">
+    <script src="./data.js"></script>
+    <script src="./assets/model/DunerManager.js"></script>
+    <script src="./assets/model/CartManager.js"></script>
+
+
+    <style>
+ 
+        #menuPage{
+            position: relative;
+        }
+        #krugche{
+            background-color: red;
+            width: 20px;
+            height: 20px;
+            border-radius: 25px;
+            position: absolute;
+        }
+        header{
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 80px;
+        }
+        #menuPage.page{
+            height: 100vh;
+            width: 100%;
+            background-color: brown;
+
+        }
+        #cartPage.page{
+            height: 100vh;
+            width: 100%;
+            background-color:burlywood;
+            
+
+        }
+        #orderPage.page{
+            height: 100vh;
+            width: 100%;
+            background-color:coral;
+
+        }
+        #container{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        } 
+        .card{
+            display: grid;
+            width: 200px;
+            height: 400px;
+            background-color: whitesmoke;
+            border: 1px solid gainsboro;
+            grid-template-columns: repeat(2, 100px);
+            grid-template-rows: 5fr repeat(5, 1fr);
+
+            grid-template-areas: 
+                              "a a"
+                              "b b"
+                              "c c"
+                              "d d"
+                              "e e"
+                              "f g";
+}
+        .img{
+            grid-area: a;
+        }
+        .name{
+            grid-area: b;
+        }
+        .weight{
+            grid-area: c;
+        }
+        .category{
+            grid-area: d;
+        }
+        .price{
+            grid-area: e;
+        }
+        .inputDuner{
+            grid-area: f;
+        }
+        .addBtn{
+            grid-area: g;
+        }
+        #deliveryForm{
+            display: flex;
+            flex-direction: column;
+            
+            align-items: center;
+        }
+       
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#menuPage"></div><img width="100px" src="./assets/images/logo.jpeg" alt=""></a>
+    
+        <a href="#cartPage">
+            <div id="krugche"></div>
+            <img width="100px" src="./assets/images/cart.jpeg" alt=""></a>
+    </header>
+
+
+    <main>
+        <div id="menuPage" class="page">
+            <input id="searchInput" type="search">
+            <div id="container">
+
+            </div>
+            
+        </div>
+        <div id="cartPage" class="page">
+            <div id="containerCartPage">
+
+            </div>
+            
+        </div>
+
+        <div id="orderPage" class="page">
+
+            <form id="deliveryForm">
+                <input type="text" name="name" placeholder="Name">
+                <input type="text" name="phone" placeholder="Phone">
+                <textarea name="address" cols="30" rows="10"></textarea>
+                <input id="submitButon"type="submit" value="Deliver">
+            </form>
+        </div>
+        
+    </main>
+    <script>
+        
+
+        
+    </script>
+    <script src="./viewControler.js"></script>
+</body>
+
+</html>
