@@ -1,0 +1,52 @@
+header{
+    background-color: black;
+    min-height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header h1{
+    color: white;
+    font-size: 22px;
+}
+
+main{
+    background-color: rgb(29, 29, 99);
+    min-height: 94vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mainContainer{
+    background-color: rgb(164, 164, 194);
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 80%;
+    gap: 50px;
+    padding: 5%;
+}
+
+
+#today{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+#weeks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+}
+#weekDays{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
