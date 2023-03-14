@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">Click me</button>
+
+    <div id="allImgs"></div>
+
+    <script>
+        let btn = document.getElementById('btn');
+        let allImgs = document.getElementById('allImgs');
+
+        function myFetch(url) {
+            return fetch(url)
+                .then(request => {
+                    if (request.ok) {
+                        return request.json();
+                    } else {
+                        return Promise.reject('Someting went wrong!')
+                    }
+
+                })
+        }
+
+        btn.addEventListener('click', (e) => {
+            allImgs.innerHTML = "";
+
+            // for (let i = 0; i < 5; i++) {
+            let img = document.createElement('img');
+            Promise.any([ //returns the first GET request which is resolved! If i used RACE insted of ANY i would get the first request, it does not matter if the request is resolved or rejected!!!
+                myFetch("https://dog.ceo/api/breeds/image/random"),
+                myFetch("https://dog.ceo/api/breeds/image/random"),
+                myFetch("https://dog.ceo/api/breeds/image/random"),
+                myFetch("https://dog.ceo/api/breeds/image/random"),
+                myFetch("https://dog.ceo/api/breeds/image/random")
+                ])
+                .then(body => {
+                    console.log(body.message);
+                    img.src = body.message;
+                    allImgs.append(img);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+            // }
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>
