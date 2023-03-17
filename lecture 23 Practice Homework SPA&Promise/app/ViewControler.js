@@ -72,18 +72,43 @@ class ViewController {
 
 
 
-    renderAnimals = (animalList, container) => {
-
-
-
-
-    }
+   
 
     renderMainPage = () => {
         let loanPerson = document.getElementById('loanPerson');
         loanPerson.value = userManager.loggedUser.username;
+        let borrowerIncome = null;
+        let requestedAmount = null;
+        let requestedTerm = null;
 
-        
+        let loanForm = document.getElementById('loanForm');
+        loanForm.elements.sub.disabled = true;
+        loanForm.addEventListener('input', (e) =>{
+
+            e.preventDefault();
+            borrowerIncome = Number(e.currentTarget.elements.income.value);
+            requestedAmount = Number(e.currentTarget.elements.loan.value);
+            requestedTerm = Number(e.currentTarget.elements.term.value);
+
+            if(borrowerIncome & requestedAmount & requestedTerm){
+                e.currentTarget.elements.sub.disabled = false;
+            }
+
+
+
+        });
+
+        loanForm.elements.sub.addEventListener('click', (e) =>{
+            e.preventDefault();
+            if(requestedAmount > 999){
+                if(requestedTerm < 6){
+                    loanForm.elements.term.value = 6;
+                    requestedTerm = 6; 
+                }
+            }
+            //console.log( typeof borrowerIncome, typeof requestedAmount, typeof requestedTerm);
+        });
+
     }
 
 
