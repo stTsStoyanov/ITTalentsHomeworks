@@ -49,7 +49,42 @@ header {
 }
 
 
-#donate .container {
+#application{
+    background-color: pink;
+    min-height: 92vh;
+}
+#loanApplication{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+}
+#loanInformation tr,th,td{  /*table*/
+    border: 2px solid black;
+    font-size: 18px;
+}
+
+#loanOverview{
+    background-color: rgb(166, 191, 237);
+    min-height: 92vh;
+  
+}
+#overview{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+}
+#overview tr,th,td{
+    border: 2px solid black;
+    font-size: 18px;
+}
+#loanOverviewLink{
+    display: none;
+}
+
+
+/* #donate .container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +96,7 @@ header {
     flex-direction: column;
     gap: 10px;
     margin: 5% 0% 3%; 
-}
+} */
 
 #historyDescription{
     font-size: 22px;

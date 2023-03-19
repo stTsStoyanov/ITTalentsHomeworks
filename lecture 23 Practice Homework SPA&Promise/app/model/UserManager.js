@@ -3,6 +3,8 @@ class User {
     constructor(user, pass) {
         this.username = user;
         this.password = pass;
+        this.moneyInBank = Math.floor(Math.random() * 10000).toFixed(2);
+        //this.id = null;
     }
 }
 
@@ -26,7 +28,7 @@ class UserManager {
     }
 
     loggedUser = null;
-    users = [new User('kami', 'kami123')];
+    users = [new User('kami', 'kami123',Math.floor(Math.random() * 10000).toFixed(2) )];
     
 
 
