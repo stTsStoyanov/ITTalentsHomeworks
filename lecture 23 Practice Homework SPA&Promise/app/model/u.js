@@ -3,9 +3,7 @@ class User {
     constructor(user, pass) {
         this.username = user;
         this.password = pass;
-        this.moneyInBank = Number(Math.floor(Math.random() * 10000).toFixed(2));
-        this.loanApplications = null
-        // this.salary = null
+        this.moneyInBank = Math.floor(Math.random() * 10000).toFixed(2);
         //this.id = null;
     }
 }
@@ -15,7 +13,7 @@ class UserManager {
     constructor() {
         let loggedUser = JSON.parse(localStorage.getItem('isThereUser'));
         if (loggedUser) {
-            this.loggedUser = new User(loggedUser.username, loggedUser.password, loggedUser.moneyInBank, loggedUser.loanApplications);// log the user from localeStorage as a logged user!
+            this.loggedUser = new User(loggedUser.username, loggedUser.password);// log the user from localeStorage as a logged user!
 
         }
 
@@ -32,22 +30,7 @@ class UserManager {
     loggedUser = null;
     users = [new User('kami', 'kami123',Math.floor(Math.random() * 10000).toFixed(2) )];
     
-    updateUsers = () =>{
-        let userExist;// = this.users.idexOf(this.loggedUser);
-        this.users.forEach(user => {
-            if(user.username == this.loggedUser.username){
-                userExist = this.users.indexOf(user)
-                console.log(userExist)
-            }
-        })
 
-        console.log("USER UPDATE",userExist);
-        
-        if(userExist >=0){
-            this.users.splice(userExist, 1, this.loggedUser);
-            localStorage.setItem('userList', JSON.stringify(this.users));
-        }
-    }
 
 
     login = ({ username, password }) => {

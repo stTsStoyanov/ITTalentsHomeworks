@@ -9,29 +9,7 @@ class ViewController {
     }
 
 
-    handleTime = (event) =>{
-        // while(true){
-        //     if(userManager.loggedUser.salary){
-        //         timeManager.oneDay();
-        //         console.log('DAY');
-        //     }
-        // }
 
-
-
-        timeManager.oneDay();
-        console.log('DAY');
-        //----------------------------------
-
-        // let promise = timeManager.monthLogic();
-        // promise.then(data =>{
-        //     let moneyInBank = userManager.loggedUser.moneyInBank;
-        //     userManager.loggedUser.moneyInBank += userManager.loggedUser.salary;
-        //     userManager.updateUsers();
-        // });
-
-
-    }
 
     handleHashChange = (event) => { //handler of 'hashchange' and 'load'!
         let hash = window.location.hash.slice(1) || "login";// slice, because the first element is # and we do not want it!
@@ -45,13 +23,6 @@ class ViewController {
             if (!userManager.loggedUser) {
                 location.hash = 'login';
                 return; // the rest of code in this handler won't be executed!
-            }
-        }
-
-        if(hash === 'login'){
-            if(userManager.loggedUser){
-                location.hash = 'home';
-                return;
             }
         }
 
@@ -84,8 +55,8 @@ class ViewController {
             case "application":
                 // this.renderApplication();
                 break;
-            case "loanOverview":
-                this.renderloanOverview()
+            case "donate":
+                this.renderDonaePage();
                 break;
             case 'login':
                 this.renderLogin();
@@ -104,7 +75,6 @@ class ViewController {
 
 
     renderMainPage = () => {
-
         let loanPerson = document.getElementById('loanPerson');
         loanPerson.value = userManager.loggedUser.username;
         let borrowerIncome = null;
@@ -144,58 +114,12 @@ class ViewController {
                 }
             }
             console.log(borrowerIncome, requestedAmount, requestedTerm);
-
-            userManager.updateUsers(); // updating the information regarding the logged user in localeStorage
-
             location.hash = 'application'
-
-            userManager.loggedUser.salary = borrowerIncome;
-            userManager.loggedUser.loanApplications +=1;
-
-
             let id = loanMamager.renderLoanId()
             console.log(id)
             this.renderApplication(borrowerIncome, requestedAmount, requestedTerm, id);
             this.applicationPage(borrowerIncome, requestedAmount, requestedTerm, id);
         });
-
-    }
-
-
-    renderloanOverview =() =>{
-
-        this.handleTime();
-        //window.addEventListener('load', this.handleTime());
-
-        let loanOverview = document.getElementById('loanOverview');
-        let overview = document.getElementById('overview')
-        let repayInFull = document.createElement('input');
-        repayInFull.type = 'submit';
-        repayInFull.value = 'Repay in full';
-
-
-
-        repayInFull.onclick = () =>{
-            let moneyInBank = userManager.loggedUser.moneyInBank;
-            let data = JSON.parse(localStorage.getItem('listOfLoans'));
-            let id = data[data.length-1].id;
-            console.log(id);
-            let loanSum = Number(data[data.length-1].totalSum);
-
-            if(loanSum <= moneyInBank){
-                moneyInBank -= loanSum;
-                data[data.length-1].totalSum = '0';
-                data[data.length-1].state = "Prepaid loan"
-                localStorage.setItem('listOfLoans', JSON.stringify(data));
-                userManager.loggedUser.moneyInBank = moneyInBank;
-                userManager.updateUsers();
-                console.log('i am hereeeeeeeeeeeeeeeeeeeeeeeeee')
-            }
-
-            repayInFull.style.display = none;
-        }
-
-        overview.append(repayInFull);
 
     }
 
@@ -231,8 +155,6 @@ class ViewController {
                 offersBtn.value = 'View offers'
                 loanApplication.append(offersBtn);
                 offersBtn.onclick = () =>{
-
-
                     for(let i=0; i<data.length; i++){
                         console.log(`I am here ${data[i]}`)
                         if(data[i]){
@@ -240,7 +162,7 @@ class ViewController {
                             offer = offerManager.getOffer(interest, requestedAmount, requestedTerm);
                             offer.id = id;
                             console.log(`te ti oferta batce ${offer.monthlyPayment}`)
-                            this.renderOffer(requestedAmount,interest, requestedTerm, offer, i, id);
+                            this.renderOffer(requestedAmount,interest, requestedTerm, offer, i+1, id);
                         }
                         offersBtn.style.display = 'none';
                     }
@@ -253,20 +175,6 @@ class ViewController {
             applicationStatus.innerText = 'Canceled';
         })
 
-    }
-
-    tableRow = (thInfo, tdInfo, id) =>{ //creates data for a table row
-        let tr = document.createElement('tr');
-        let th = document.createElement('th');
-        let td = document.createElement('td');
-
-        th.innerText = thInfo;
-        td.innerText = tdInfo;
-        if(id){
-            td.id = id; 
-        }
-        tr.append(th, td);
-        return tr;
     }
 
     renderOffer = (requestedAmount, interest, requestedTerm, offer,btn ,id) =>{
@@ -282,40 +190,51 @@ class ViewController {
         td.innerText = interest + '%';
         tr.append(th,td);
 
-    
-        let row2 = this.tableRow('Requested amount', requestedAmount);
-        let row3= this.tableRow('Monthly payment', offer.monthlyPayment);
-        let row4 = this.tableRow('Loan term', requestedTerm);
+        let tr1 = document.createElement('tr');
+        let th1 = document.createElement('th');
+        let td1 = document.createElement('td');
+        th1.innerText = 'Requested amount';
+        td1.innerText = requestedAmount;
+        tr1.append(th1,td1);
 
-        table.append(tr,row2,row3,row4);
+        let tr2 = document.createElement('tr');
+        let th2 = document.createElement('th');
+        let td2 = document.createElement('td');
+        th2.innerText = 'Monthly payment';
+        td2.innerText = offer.monthlyPayment;
+        tr2.append(th2,td2);
 
+        let tr3 = document.createElement('tr');
+        let th3 = document.createElement('th');
+        let td3 = document.createElement('td');
+        th3.innerText = 'Loan term';
+        td3.innerText = requestedTerm;
+        tr3.append(th3,td3);
 
+        table.append(tr,tr1,tr2,tr3);
         let acceptBtn = document.createElement('button');
         acceptBtn.innerText = 'Get loan';
-        btn+=1;
         acceptBtn.id = `loan${btn}`
-
         acceptBtn.onclick = () =>{
-
             let copy = table;
             location.hash = 'loanOverview';
 
-            offerManager.offers.push(offer);
-            // console.log(`U golemio kod PREDI push u listOfloans ${loanMamager.listOfLoans}`)
+            let tr = document.createElement('tr');
+            let th = document.createElement('th');
+            let td = document.createElement('td');
+            th.innerText = 'Total owned amount';
+            td.innerText = offer.totalSum;
+            tr.append(th,td);
 
-            loanMamager.listOfLoans.push(new Loan(userManager.loggedUser.username, id, offer.amount, offer.totalSum.toFixed(2), offer.monthlyPayment));
-            localStorage.setItem('loanOwner', JSON.stringify(loanMamager.listOfLoans)); // test, it is not needed
+            let tr1 = document.createElement('tr');
+            let th1 = document.createElement('th');
+            let td1 = document.createElement('td');
+            th1.innerText = 'ID of loan';
+            td1.innerText = id;
+            tr1.append(th1,td1);
+            copy.append(tr1)
 
-            localStorage.setItem('listOfLoans', JSON.stringify(loanMamager.listOfLoans)); // update the information regarding loans in LocaleStorage
-
-            // console.log(`U golemio kod SLED push u listOfloans ${loanMamager.listOfLoans}`)
-
-            let row1 = this.tableRow('Total owned amount', offer.totalSum.toFixed(2))
-            let row2 = this.tableRow('ID of loan',id)
-
-            copy.append(row1,row2)
-
-            // loanMamager.processedLoan(offer);// TRQBWA DA GO PRERABOTQ!
+            loanMamager.processedLoan(offer);
 
             let overview = document.getElementById('overview').append(copy)
             container.innerHTML = '';
@@ -325,30 +244,59 @@ class ViewController {
         container.append(table, acceptBtn);
 
         //monthlyPayment
+
+
     }
-
-
 
     renderApplication = (borrowerIncome, requestedAmount, requestedTerm, id) => {
 
         let loanInformation = document.getElementById('loanInformation'); //table for the loan
         loanInformation.innerHTML = ""
-  
-        let row1 = this.tableRow('ID of loan', id)
-        loanInformation.append(row1);
+        let tr = document.createElement('tr');
+        let th = document.createElement('th');
+        let td = document.createElement('td');
 
-        let row2 = this.tableRow('Requested amount', requestedAmount)
-        loanInformation.append(row2);
+        let tr1 = document.createElement('tr');
+        let th1 = document.createElement('th');
+        let td1 = document.createElement('td');
 
+        let tr2 = document.createElement('tr');
+        let th2 = document.createElement('th');
+        let td2 = document.createElement('td');
 
-        let row3 = this.tableRow('Requested term', requestedTerm)
-        loanInformation.append(row3);
+        let tr3 = document.createElement('tr');
+        let th3 = document.createElement('th');
+        let td3 = document.createElement('td');
 
+        th.innerText = 'ID of loan';
+        td.innerHTML = id;
+        tr.append(th, td);
+        loanInformation.append(tr);
 
-        let row4 = this.tableRow('Status','Pending','applicationStatus',)
-        loanInformation.append(row4);
+        //tr.innerHTML='';
+        th1.innerText = 'Requested amount';
+        td1.innerText = requestedAmount;
+        tr1.append(th1, td1);
+        loanInformation.append(tr1);
+
+        //tr.innerHTML='';
+        th2.innerText = 'Requested term';
+        td2.innerText = requestedTerm;
+        tr2.append(th2, td2);
+        loanInformation.append(tr2);
+
+        //tr.innerHTML='';
+        th3.innerText = 'Status';
+        td3.id = 'applicationStatus';
+        td3.innerText = 'Pending';
+        tr3.append(th3, td3);
+        loanInformation.append(tr3);
+
 
     }
+
+
+
 
 
 

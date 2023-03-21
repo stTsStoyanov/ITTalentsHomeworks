@@ -1,4 +1,13 @@
 class Loan {
+    constructor(user, id, amount, totalSum, monthlyPayment, remainder){
+        this.user = user;
+        this.id = id;
+        this.amount = amount;
+        this.totalSum = totalSum,
+        this.monthlyPayment = monthlyPayment,
+        this.state = 'In progress'
+
+    }
 
 }
 
@@ -15,10 +24,29 @@ class LoanManager {
     }
 
     loanId = []
-    listOfLoans = [];
+    listOfLoans = JSON.parse(localStorage.getItem('listOfLoans')) ? [...JSON.parse(localStorage.getItem('listOfLoans'))] : [];
+    //listOfLoans =  [];
+
+    updateLoans = (id) =>{
+ 
+
+        console.log('BEFORE loans update', this.listOfLoans);
+
+
+        let storageLoans = JSON.parse(localStorage.getItem('listOfLoans'));
+        this.listOfLoans = storageLoans ? [...storageLoans] : [];
+        
+
+        let result = this.listOfLoans.filter(loan => loan.id != id)
+
+
+        console.log("LOANS UPDATE",result);
+        
+
+    }
 
     processedLoan =(offer)=>{
-        this.listOfLoans.push(offer)
+        //this.listOfLoans.push(offer) // tova e oferta, po-udobno shte e da push-vam ne oferti ami samite zaemi!
         let localCopy = JSON.parse(localStorage.getItem('listOfLoans'));
         // let isThere = localCopy.find(el => el.id == offer.id)
         // if(!isThere){
@@ -26,7 +54,6 @@ class LoanManager {
         //     localStorage.setItem('listOfLoans', JSON.stringify(this.listOfLoans))
         // }
         
-
         if(!localCopy){
             localStorage.setItem('listOfLoans', JSON.stringify(this.listOfLoans));
         }

@@ -37,6 +37,9 @@ class OfferManager {
         let payment =  (totalAmount / term).toFixed(2);
         console.log(payment)
 
+
+        
+
         return new Offer(interst, amount, totalAmount, payment, term);
     }
 
