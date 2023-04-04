@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cocktails by Stoyan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="./styles/style.css">
+
+  <script src="./model/utilities.js"></script>
+  <script src="./model/constants.js"></script>
+
+  <script src="./model/userManager.js"></script>
+
+  <!-- <script src="./model/userManager.js"></script>
+  <script src="./model/controllers/registerController.js"></script>
+  <script src="./model/controllers/loginController.js"></script>
+  <script src="./model/controllers/logoutController.js"></script>
+
+  <script src="./model/cocktailsManager.js"></script>
+  <script src="./model/controllers/cocktailsController.js"></script>
+  <script src="./model/controllers/detailsController.js"></script>
+
+  <script src="./model/controllers/filterController.js"></script> -->
+
+
+  <style>
+
+  </style>
+
+
+
+</head>
+
+<body>
+
+  <header id="headerId">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#filters">Filters</a>
+        <a class="navbar-brand" href="#cocktails">Cocktails</a>
+        <div class="navUsernameDiv">
+          <p>Hi, <span id="navUsername"></span>! Welcome to the cocktail page!</p>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+    
+            <a class="nav-link" href="#login" id="loginLink">Login</a>
+            <a class="nav-link" href="#register" id="registerLink">Register</a>
+            <a class="nav-link" href="#logout" id="logoutLink">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <div id="login" class="text-center">
+
+    <form class="form-signin" id="loginForm">
+      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
+        height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+      <label for="inputEmail" class="sr-only">Username</label>
+      <input name="username" type="text"  class="form-control" placeholder="Username" required=""
+        autofocus="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="password" type="password" autocomplete="on" class="form-control" placeholder="Password" required="">
+      <div class="checkbox mb-3">
+        <label>
+          <!-- <input type="" value="remember-me"> -->
+          <a href="#register">Dont hava an account yet?</a>
+        </label>
+      </div>
+
+    
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      <p class="mt-5 mb-3 text-muted">© 2023</p>
+    </form>
+
+  </div>
+
+
+  <div id="logout" class="text-center">
+
+    <form class="form-signin" id="logoutForm">
+      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
+        height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Would you like to logout</h1>
+
+
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="logoutBtn">Logout</button>
+      <p class="mt-5 mb-3 text-muted">© 2023</p>
+    </form>
+
+  </div>
+
+
+  <div id="register" class="text-center">
+
+    <form class="form-register" id="registrerForm">
+      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
+        height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+      <label for="inputEmail" class="sr-only">Username</label>
+      <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required=""
+        autofocus="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="password" type="password" id="inputPassword" autocomplete="on" class="form-control" placeholder="Password" required="">
+      <label for="inputPassword" class="sr-only">Password confirm</label>
+      <input name="passwordConfirm" type="password" id="inputPasswordConfirm" autocomplete="on" class="form-control"
+        placeholder="Password confirm" required="">
+      <div class="checkbox mb-3">
+        <label>
+          <!-- <input type="" value="remember-me"> -->
+          <a href="#login">Already have an account</a>
+        </label>
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="registerBtn">Register</button>
+      <p class="mt-5 mb-3 text-muted">© 2023</p>
+    </form>
+
+  </div>
+
+  <div id="cocktails">
+    <input type="text" id="searchCocktailsInput" placeholder="Search for a cocktail">
+    <div class="results" id="ofTheDay">
+
+
+    </div>
+
+    <div>
+      <div><h3>LIST of FAVORIT drinks:</h1></div>
+      <div  class="results" id="favCocktails">
+        
+      </div>
+
+
+    </div>
+
+    <div>
+      <div><h3>LIST of drinks:</h1></div>
+      <div class="results" id="otherCocktails">
+
+      </div>
+
+
+    </div>
+
+
+
+
+  </div>
+
+  <div id="details">
+ 
+
+  </div>
+
+  <div id="filters">
+    
+    <div >
+      <h1>Categories</h1>
+      <div id="categories"></div>
+
+    </div>
+
+    
+    <div >
+      <h1>Glasses</h1>
+      <div id="glasses">
+
+      </div>
+    </div>
+
+    
+    <div >
+      <h1>Ingredients</h1>
+      <div id="ingredients">
+
+      </div>
+    </div>
+
+    
+    <div >
+      <h1>Drink types</h1>
+      <div id="drinkType"></div>
+    </div>
+  </div>
+
+  <div id="404">
+    <h1>ERROR 404 PAGE not found!!!!</h1>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module" src="./model/main.js"></script>
+</body>
+
+</html>

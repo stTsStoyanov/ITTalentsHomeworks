@@ -1,0 +1,201 @@
+header {
+    display: flex;
+    /* height: 60px; */
+    background-color: black;
+    min-height: 8vh;
+}
+/* main{
+    min-height: 92vh;
+} */
+
+.logo {
+    display: flex;
+    width: 38%;
+}
+
+.headerButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    width: 30%;
+}
+.headerButtons a{
+    text-decoration: none;
+    color: white;
+    margin-right: 10%;
+}
+
+
+#home{
+    /* height: auto; */
+    background-color: green;
+    min-height: 92vh;
+}
+
+/* #home .container{ */
+#loanForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#loanForm input{
+    width: 210px;
+}
+#loanPerson{
+    text-align: center;
+    font-size: 18px;
+}
+
+
+#application{
+    background-color: pink;
+    min-height: 92vh;
+}
+#loanApplication{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+}
+#loanInformation tr,th,td{  /*table*/
+    border: 2px solid black;
+    font-size: 18px;
+}
+
+#loanOverview{
+    background-color: rgb(166, 191, 237);
+    min-height: 92vh;
+  
+}
+#overview{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+}
+#overview tr,th,td{
+    border: 2px solid black;
+    font-size: 18px;
+}
+#loanOverviewLink{
+    display: none;
+}
+
+
+/* #donate .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#donateForm {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 5% 0% 3%; 
+} */
+
+#historyDescription{
+    font-size: 22px;
+    color: white;
+    margin: 1%;
+}
+#donationsHistory{
+    font-size: 20px;
+    color: white;
+}
+#donationsHistory th{
+    border: solid black 5px;
+}
+/* #table{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 5%;
+    border: 2px solid black;
+    bor
+} */
+
+.cherta{
+    border: 1px solid black;
+}
+.column {
+    float: left;
+    width: 33.33%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+#adopted .container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: 0.5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#login form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5%;
+}
+#login{
+    background-color: khaki;
+    min-height: 100vh;
+}
+
+#register form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5%;
+}
+#register{
+    background-color: khaki;
+    min-height: 100vh;
+}
+
+#logout{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#logout div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}

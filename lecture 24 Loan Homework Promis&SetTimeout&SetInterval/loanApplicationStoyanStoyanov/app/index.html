@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan platform</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <script src="./images/data.js"></script>
+    <script src="./model/AnimalManager.js"></script>
+    <!-- <script src="./model/UserManager.js"></script> -->
+
+    <style>
+
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img width="120" src="./images/loan.jpeg" alt="">
+        </div>
+        <div class="headerButtons">
+            <a href="#login" id="loginLink">Login</a>
+            <a href="#register" id="registerLink">Register</a>
+            <a href="#home">Home</a>
+            <a href="#application">Application</a>
+            <a href="#loanOverview" id="loanOverviewLink">Loan Overview</a>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="page" id="login">
+
+
+            <form id="loginForm">
+                <input name="username" type="text" placeholder="username">
+                <input name="password" type="password" placeholder="pass">
+                <label for="">
+                    <input name="remember" type="checkbox"> Remember me?
+                </label>
+                <input name="sub" type="submit" value="Login">
+            </form>
+
+        </div>
+
+
+
+
+        <div class="page" id="logout">
+            <div>
+                <span id="span"></span>
+                <form id="logoutForm">
+                    <input name="sub" type="submit" value="Logout" id="logoutFormBtn">
+                </form>
+            </div>
+        </div>
+
+
+
+        <div class="page" id="register">
+
+            <form id="registerForm">
+                <input name="username" type="text" placeholder="username">
+                <input name="password" type="password" placeholder="pass">
+                <input name="passConfirm" type="password" placeholder="confirm pass">
+                <input name="sub" type="submit" value="Register">
+            </form>
+        </div>
+
+
+
+        <div class="page" id="home">
+
+            <div id="loanContainer">
+                <span style="display: flex; justify-content: center; align-items: center;color: white; font-size: 20px; padding-top: 5%; padding-bottom: 2%;">Loan application form</span>
+                <form id="loanForm">
+
+                    <input type="text" name="name" placeholder="Borrower names" id="loanPerson" disabled>
+                    <input type="number" name="income" placeholder="Monthly income of the borrower" id="">
+                    <input type="number" name="loan" placeholder="Requested amount of money" id="">
+                    <input type="number" name="term" placeholder="The term og the loan in months" id="">
+                    <input type="submit" name="sub" value="Apply" id="donateBtn">
+
+                </form>
+            </div>
+            <div id="searchListener">
+
+                <!-- <input type="text" id="searchInput" placeholder="Search by name">
+                <select name="type" id="typeSelect">
+                    <option selected>filter by type</option>
+                </select> -->
+
+            </div>
+
+            <div class="container">
+
+
+            </div>
+        </div>
+
+
+
+
+        <div class="page" id="application">
+            <div class="container" id="loanApplication">
+
+                <h1 id="historyDescription">Loan Information</h1>
+
+                <table id="loanInformation">
+
+                    <!-- <tr>
+                        <th>ID of loan</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Requested amount</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Requested term</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td></td>
+                    </tr> -->
+
+                   
+                </table>
+
+                <input type="submit" id="cancelApplication" placeholder="Cancel" value="Cancel">
+
+            </div>
+
+
+            </div>
+
+        <div id="loanOverview"> 
+            <div id="overview">
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="./model/TimeManager.js"></script>
+    <script src="./model/OfferManager.js"></script>
+    <script src="./model/LoanManager.js"></script>
+    <!-- <script src="./model/u.js"></script> -->
+    <script src="./model/UserManager.js"></script>
+    <!-- <script src="v.js"></script> -->
+    <script src="ViewControler.js"></script>
+</body>
+
+</html>

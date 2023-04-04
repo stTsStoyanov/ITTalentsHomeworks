@@ -1,0 +1,115 @@
+.form-signin,
+.form-register {
+    width: 300px;
+    margin: auto;
+}
+
+
+
+#ofTheDay {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(222, 212, 212);
+    margin: 15px;
+}
+
+#otherCocktails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px;
+}
+
+#favCocktails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px;
+}
+
+#logoutLink {
+    display: none;
+}
+
+.navUsernameDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#details {
+    display: flex;
+    flex-direction: row;
+}
+
+#filters>div {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+}
+
+
+#categories {
+    /* background-color: #dddddd; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 2px solid gray;
+}
+
+#categories a {
+    color: black;
+    padding: 5px;
+    font-size: 20px;
+}
+
+
+#glasses {
+    /* background-color: #c0c0c0; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+    border-bottom: 2px solid gray;
+    /* justify-content: space-between; */
+}
+
+#glasses a {
+    color: black;
+    padding: 5px;
+    font-size: 20px;
+}
+
+#ingredients {
+    /* background-color: #aaaaaa; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+    border-bottom: 2px solid gray;
+    /* justify-content: space-between; */
+}
+
+#ingredients a {
+    color: black;
+    padding: 5px;
+    font-size: 20px;
+}
+
+#drinkType {
+    /* background-color: #808080; */
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-bottom: 2px solid gray;
+    /* justify-content: space-between; */
+}
+
+#drinkType a {
+    color: black;
+    padding: 5px;
+    font-size: 20px;
+}
